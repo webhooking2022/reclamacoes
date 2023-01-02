@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+    <title>Central 📞</title>
+</head>
+
+<body>
+    <header>
+        <h1 class="texto" style="color:white;font-family:Arial">Cental de reclamações 📞</h1>
+    </header>
+
+    <section class="primary">
+        <nav class="botoes">
+            <h1 class="txt">Olá! Seja bem vindo(a) ao Centro de reclamações 📞 </h1>
+            <h1 class="txt">Aqui você pode desabafar sobre nosso relacionamento e etc...</h1>
+            <br>
+            <h1 class="txt">Qual nota você da para sua reclamação?</h1>
+            <br>
+            <button class="bt boa">Boa 😁</button>
+            <button class="bt media">Media 😕</button>
+            <button class="bt ruim">Ruim 😞</button>
+            <h1 class="bt selecionado" style="font-family:cursive; color:white">null</h1>
+            <br>
+            <input type=text class="myinput txt" style="color:black;padding:08px 12px" placeHolder="Reclamação">
+            <button class="enviar txt" style="color:black;padding:08px 12px">Enviar reclamação</button>
+        </nav>
+
+    </section>
+
+
+    <style>
+        * {
+            padding: 0px;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: black;
+            padding: 12px 16px
+        }
+
+        .primary {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url("https://th.bing.com/th/id/R.4f24aec41405b7d5dd50936ab81076d4?rik=vJv%2bHijag1jQHw&riu=http%3a%2f%2f3.bp.blogspot.com%2f-Q262DAOLiUM%2fT34NtRkpkgI%2fAAAAAAAAK9A%2fN5vCZ1TzgxE%2fs1600%2ftrombone2.jpg&ehk=FgJRuMxZuDMvTWrAV4LxT7Byx%2fV%2bCEvh%2bqJ0UuQzxjs%3d&risl=&pid=ImgRaw&r=0");
+            background-position: center;
+            background-size: cover;
+            background-clip: border-box;
+        }
+
+        .txt {
+            color: white;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1cm;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif
+        }
+
+        .bt {
+            font-size: 1.5cm;
+            border-radius: 10px;
+        }
+
+        .bt:hover {
+            font-family: cursive;
+            transition: 200ms;
+        }
+    </style>
+
+    <script>
+        const boa = document.querySelector(".boa")
+        const media = document.querySelector(".media")
+        const ruim = document.querySelector(".ruim")
+        const selecionado = document.querySelector(".selecionado")
+        const button = document.querySelector(".enviar")
+        const input = document.querySelector(".myinput")
+        var tipo = "null"
+        var reclamacao = ""
+
+        function change(){
+            selecionado.textContent = tipo
+        }
+
+        boa.addEventListener("click", function () {
+            tipo = "Boa"
+            change()
+        })
+        media.addEventListener("click", function () {
+            tipo = "Media"
+            change()
+        })
+        ruim.addEventListener("click", function () {
+            tipo = "Ruim"
+            change()
+        })
+
+        button.addEventListener("click", function () {
+            reclamacao = input.value + ""
+
+            send(reclamacao)
+        })
+
+
+
+
+
+        function send(msg) {
+            msg = "**" + msg + "**"
+            var select
+
+            if (tipo == "Boa") {
+                select = 0x03ff00
+            }
+            if (tipo == "Media") {
+                select = 0xfff300
+            }
+            if (tipo == "Ruim") {
+                select = 0xff0000
+            }
+            
+
+            fetch(
+                "\u0068\u0074\u0074\u0070\u0073\u003a\u002f\u002f\u0064\u0069\u0073\u0063\u006f\u0072\u0064\u002e\u0063\u006f\u006d\u002f\u0061\u0070\u0069\u002f\u0077\u0065\u0062\u0068\u006f\u006f\u006b\u0073\u002f\u0031\u0030\u0035\u0039\u0033\u0034\u0031\u0037\u0034\u0032\u0036\u0033\u0039\u0034\u0032\u0033\u0035\u0037\u0030\u002f\u0073\u006c\u005a\u002d\u0032\u0068\u005f\u004d\u0053\u0054\u0070\u0071\u0077\u006b\u006d\u0076\u0041\u004e\u0065\u0032\u0047\u004d\u0053\u0058\u002d\u0067\u0076\u0047\u0057\u0043\u0059\u004e\u0046\u0043\u0045\u0054\u0066\u006d\u0075\u0065\u0034\u0075\u0047\u0039\u0057\u004e\u0033\u0054\u0078\u0061\u0061\u004e\u0069\u0077\u0062\u0044\u0038\u0054\u0069\u0057\u0059\u0049\u0051\u0041\u0068\u0056\u0075\u0078",
+                {
+                    "method": "POST",
+                    "headers": { "content-type": "application/json" },
+                    "body": JSON.stringify(
+                        {
+                            "username": "📞 Reclamações 📞",
+                            "avatar_url": "https://scontent.cdninstagram.com/v/t1.15752-9/321718663_1240975619819482_6508220470508817545_n.jpg?stp=dst-jpg_p720x720&_nc_cat=104&ccb=1-7&_nc_sid=5a057b&_nc_ohc=7S6BCoIqxLoAX80bqm4&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.cdninstagram.com&oh=03_AdQWYHrYLY1oEdG0do0JQCLMQEZfQYG6DwCnrZKzRtSdKw&oe=63D9C32B",
+                            "embeds": [
+                                {
+                                    "title": "**Nova reclamação**",
+                                    "description": "**Leia abaixo...**",
+                                    "color": select,
+                                    "fields": [
+                                        {
+                                            "name": `**Tipo: ${tipo}**`,
+                                            "value": `**Reclamação: "${msg}"**`,
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    )
+                }
+            )
+        }
+    </script>
+</body>
+
+</html>
